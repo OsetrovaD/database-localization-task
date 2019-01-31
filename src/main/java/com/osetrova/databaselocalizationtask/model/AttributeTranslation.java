@@ -3,6 +3,7 @@ package com.osetrova.databaselocalizationtask.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -17,6 +18,12 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@EqualsAndHashCode(
+        exclude = {
+                "name",
+                "locale",
+                "attribute"
+        })
 @Builder
 @Entity
 @Table(name = "attribute_translation", schema = "product_storage")

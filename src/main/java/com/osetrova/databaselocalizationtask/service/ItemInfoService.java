@@ -15,7 +15,7 @@ import static java.util.stream.Collectors.toList;
 
 @Service
 @AllArgsConstructor(onConstructor = @__(@Autowired))
-@Transactional
+@Transactional(readOnly = true)
 public class ItemInfoService {
 
     private AttributeService attributeService;
