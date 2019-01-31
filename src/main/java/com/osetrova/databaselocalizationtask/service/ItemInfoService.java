@@ -25,14 +25,13 @@ public class ItemInfoService {
     private LocaleService localeService;
 
     public ItemInfo getItemInfo(RequestItemParam param) {
-        ItemInfo itemInfo = new ItemInfo();
         Locale locale = localeService.findByType(param.getLocaleType());
         Item item = itemService.findByCode(param.getCode());
 
-        itemInfo.setItemName(itemTranslationService.findByLocaleAndItem(locale, item).getName());
-        itemInfo.setAttributesNames(getAttributesNames(item, locale));
-
-        return itemInfo;
+        return ItemInfo.builder()
+                .itemName(itemTranslationService.findByLocaleAndItem(locale, item).getName())
+                .attributesNames(getAttributesNames(item, locale))
+                .build();
     }
 
     private List<String> getAttributesNames(Item item, Locale locale) {
